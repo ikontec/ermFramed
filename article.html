@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Article | KWAUSO SECONDARY SCHOOL</title>
     <link rel="stylesheet" href="pc.css">
     <link rel="stylesheet" href="tablet.css">
     <link rel="stylesheet" href="phone.css">
-    <!-- Font Awesome CDN for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
@@ -15,12 +14,12 @@
         <img src="images/default.png" alt="school logo" class="logo">
         <h1 class="schoolName">KWAUSO SECONDARY SCHOOL</h1>
     </header>
-    
     <nav class="nav">
         <button class="menuButton" id="menuToggle" aria-label="Toggle menu">
             <i class="fas fa-chevron-down" id="menuIcon"></i>
         </button>
         <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
             <li><a href="studentAccount.html"><i class="fas fa-user-graduate"></i> Student Account</a></li>
             <li><a href="teacherAccount.html"><i class="fas fa-chalkboard-teacher"></i> Teacher Account</a></li>
             <li><a href="admission.html"><i class="fas fa-user-plus"></i> Admission</a></li>
@@ -30,19 +29,14 @@
             <li><a href="https://ikonteki.wuaze.com"><i class="fas fa-blog"></i> Developer's Blog</a></li>
         </ul>
     </nav>
-
     <main>
-        <section class="content">
-            <h2>News & Updates</h2>
-            <div>
-                <div class="article-preview" style="cursor:pointer;" onclick="location.href='article.html';">
-                    <img src="images/default.png" alt="News Image">
-                    <h4>This is the sample of the news's heading</h4>
-                </div>
-            </div>
+        <section class="articles">
+            <h2><i class="fas fa-newspaper"></i> Article</h2>
+            <article class="news-article" id="articleContainer">
+                <!-- Article content will be injected here -->
+            </article>
         </section>
-    </main>    
-
-<script src="script.js"></script>
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
