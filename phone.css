@@ -1,0 +1,14 @@
+    @media (max-width: 480px) { /* Smaller breakpoint for phones */
+        header {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .logo {
+            width: 50px;
+        }
+
+        .schoolName {
+            font-size: 1.2em;
+        }
+    }
