@@ -77,14 +77,15 @@ nav ul li a:hover {
 }
 
 main {
-    padding: 32px;
+    padding: 10px;
+    width: 90%;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .content {
     background-color: white;
-    padding: 28px;
+    padding: 5px;
     border-radius: 12px;
     box-shadow: 0 4px 16px rgba(0,0,0,0.09);
 }
@@ -102,7 +103,10 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 28px;
+    width: 90%;
 }
+
+
 
 .content > div > div {
     border: 1px solid #e0e0e0;
@@ -112,6 +116,7 @@ main {
     background: #fafafa;
     transition: box-shadow 0.2s;
     cursor: pointer;
+    width: 35%;
 }
 
 .content > div > div:hover {
@@ -120,7 +125,8 @@ main {
 }
 
 .content > div > div img {
-    max-width: 100%;
+    width: 80%;
+    max-width: 80%;
     height: auto;
     border-radius: 6px;
     margin-bottom: 14px;
@@ -135,95 +141,6 @@ main {
     letter-spacing: 0.2px;
 }
 
-.login-container {
-    max-width: 400px;
-    margin: 60px auto;
-    background: #fff;
-    padding: 32px 28px;
-    border-radius: 12px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.login-container h2 {
-    margin-bottom: 1.5rem;
-    color: #388e3c;
-    font-size: 2rem;
-    font-weight: 700;
-}
-
-.login-container form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center form elements horizontally */
-    gap: 1.2rem;
-}
-
-.login-container label {
-    font-weight: 500;
-    color: #333;
-    margin-bottom: 0.3rem;
-    font-size: 1.1rem;
-    width: 90%;
-    text-align: left;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-}
-
-.login-container input[type="text"],
-.login-container input[type="password"] {
-    width: 90%;
-    margin: 0 auto;
-    padding: 12px 14px;
-    border: 1px solid #bdbdbd;
-    border-radius: 7px;
-    font-size: 1.08rem;
-    background: #fafafa;
-    transition: border-color 0.2s;
-    display: block;
-    box-sizing: border-box;
-}
-
-.login-container button {
-    background: #388e3c;
-    color: #fff;
-    border: none;
-    border-radius: 7px;
-    padding: 14px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    width: 50%;
-    transition: background 0.2s;
-    margin: 0 auto;
-    display: block;
-}
-
-.login-container button:hover {
-    background: #2e7031;
-}
-
-.login-container .links {
-    margin-top: 1rem;
-    text-align: center;
-    font-size: 1.05rem;
-}
-
-.login-container .links a {
-    color: #388e3c;
-    text-decoration: none;
-    margin: 0 8px;
-    font-size: 0.98rem;
-}
-
-.login-container .links a:hover {
-    text-decoration: underline;
-}
-
 /* Article area (default/PC) */
 .articles {
     max-width: 700px;
@@ -232,15 +149,6 @@ main {
     background: #fff;
     border-radius: 18px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-}
-
-.articles h2 {
-    font-size: 2rem;
-    color: #1a237e;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
 }
 
 .article-content {
@@ -279,79 +187,3 @@ main {
     font-size: 0.98rem;
     font-style: italic;
 }
-
-        .dashboard-container {
-            max-width: 1100px;
-            margin: 2.5rem auto;
-            padding: 2rem;
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-        }
-        .dashboard-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-        .dashboard-header h2 {
-            color: #388e3c;
-            font-size: 2rem;
-            margin: 0;
-        }
-        .dashboard-header .user-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1.1rem;
-            color: #333;
-        }
-        .dashboard-header .user-info i {
-            color: #388e3c;
-        }
-        .dashboard-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 28px;
-        }
-        .dashboard-card {
-            background: #f5f5f5;
-            border-radius: 10px;
-            padding: 1.5rem 1rem;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(56,142,60,0.06);
-            transition: box-shadow 0.2s, transform 0.2s;
-            cursor: pointer;
-        }
-        .dashboard-card:hover {
-            box-shadow: 0 4px 16px rgba(56,142,60,0.13);
-            transform: translateY(-4px) scale(1.03);
-        }
-        .dashboard-card i {
-            font-size: 2.2rem;
-            color: #388e3c;
-            margin-bottom: 0.7rem;
-        }
-        .dashboard-card h3 {
-            margin: 0.5rem 0 0.2rem 0;
-            font-size: 1.15rem;
-            color: #222;
-        }
-        .dashboard-card p {
-            color: #666;
-            font-size: 0.98rem;
-        }
-        .logout-btn {
-            background: #d32f2f;
-            color: #fff;
-            border: none;
-            border-radius: 6px;
-            padding: 8px 18px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .logout-btn:hover {
-            background: #b71c1c;
-        }

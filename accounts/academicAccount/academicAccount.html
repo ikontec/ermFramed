@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff Dashboard</title>
-    <link rel="stylesheet" href="Staff_Styles/pc.css">
-    <link rel="stylesheet" href="Staff_Styles/tablet.css">
-    <link rel="stylesheet" href="Staff_Styles/phone.css">
+    <link rel="stylesheet" href="Academic_Styles/pc.css">
+    <link rel="stylesheet" href="Academic_Styles/tablet.css">
+    <link rel="stylesheet" href="Academic_Styles/phone.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
@@ -20,7 +20,7 @@
             <i class="fas fa-chevron-down" id="menuIcon"></i>
         </button>
         <ul>
-            <li><a href="../../index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="../../index.html"><i class="fas fa-home"></i>Home</a></li>
             <li><a href="helpCenter.html"><i class="fas fa-chalkboard-teacher"></i> Administration Account</a></li>
             <li><a href="helpCenter.html"><i class="fas fa-question-circle"></i> Help Center</a></li>
             <button class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
@@ -30,26 +30,20 @@
     <main>
         <div class="dashboard-container">
             <div class="dashboard-header">
-                <h2><i class="fas fa-tachometer-alt"></i> Staff Dashboard</h2>
-                <div class="user-info">
-                    <span id="staffName"><img src="staff_images/default.png"> Staff Member</span>
-                </div>
-                <div class="user-info">
-                    <i class="fas fa-envelope"></i><span class="staffName">staffmember@email.com</span>
-                </div>
+                <h2><i class="fas fa-tachometer-alt"></i>Academic Dashboard</h2>
             </div>
             <div class="dashboard-cards">
-                <div class="dashboard-card" onclick="location.href='profile.html'">
-                    <i class="fas fa-id-badge"></i>
-                    <h3>My Profile</h3>
-                    <p>View and update your personal information.</p>
+                <div class="dashboard-card" onclick="location.href='students.html'">
+                    <i class="fas fa-users"></i>
+                    <h3>View Students</h3>
+                    <p>Manage student records and performance.</p>
                 </div>
 
                 <div class="dashboard-card" onclick="location.href='students.html'">
                     <i class="fas fa-users"></i>
-                    <h3>My Students</h3>
-                    <p>Manage student records and performance.</p>
-                </div>
+                    <h3>View Staff Members</h3>
+                    <p>Manage staff records</p>
+                </div>                
 
                 <div class="dashboard-card" onclick="location.href='attendance.html'">
                     <i class="fas fa-calendar-check"></i>

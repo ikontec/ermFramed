@@ -1,0 +1,122 @@
+@media (max-width: 768px) { /* Adjusted breakpoint for tablets */
+    .schoolName {
+        font-size: 1.5em;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .logo {
+        width: 70px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        padding-top: 10px;
+        width: 100%;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    .menuButton {
+        display: block;
+        margin: 0 auto 10px;
+    }
+
+    .articles {
+        padding: 1rem;
+        border-radius: 12px;
+        max-width: 98vw;
+        margin: 1.5rem 0.5rem;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+
+    .articles h2 {
+        font-size: 1.3rem;
+        gap: 0.4rem;
+    }
+
+    .article-content h3 {
+        font-size: 1.2rem;
+        margin: 1rem 0 0.5rem 0;
+    }
+
+    .article-image {
+        max-width: 100%;
+        border-radius: 10px;
+        margin: 1rem 0;
+    }
+
+    .article-content p {
+        font-size: 1.05rem;
+        margin: 0.4rem 0;
+    }
+
+    .article-content time,
+    .article-content .article-meta {
+        font-size: 1rem;
+    }
+
+ .login-container {
+        max-width: 90vw;
+        margin: 2rem auto;
+        padding: 20px 10px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        background: #fff;
+    }
+
+    .login-container h2 {
+        font-size: 1.3rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .login-container form {
+        gap: 1rem;
+    }
+
+    .login-container label {
+        font-size: 1.05rem;
+    }
+
+    .login-container input[type="text"],
+    .login-container input[type="password"] {
+        font-size: 1.05rem;
+        padding: 9px 10px;
+        border-radius: 6px;
+    }
+
+    .login-container button {
+        font-size: 1.05rem;
+        padding: 11px;
+        border-radius: 6px;
+    }
+
+    .login-container .links {
+        margin-top: 0.9rem;
+        font-size: 1rem;
+    }
+            .dashboard-container {
+                padding: 0.7rem;
+                border-radius: 10px;
+            }
+            .dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .dashboard-cards {
+                gap: 18px;
+            }
+            .dashboard-card {
+                padding: 1rem 0.5rem;
+            }
+
+}
