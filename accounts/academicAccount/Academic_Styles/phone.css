@@ -111,5 +111,28 @@
                 font-size: 0.92rem;
             }
 
+
+    .class-list-table,
+    table {
+        font-size: 0.93em;
+        margin: 1rem 0;
+    }
+    .class-list-table th,
+    .class-list-table td,
+    table th,
+    table td {
+        padding: 8px 4px;
+    }
+    .class-list-table th,
+    table th {
+        font-size: 1em;
+    }
+    /* Responsive table: make it scrollable horizontally */
+    .class-list-table,
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
 }
 

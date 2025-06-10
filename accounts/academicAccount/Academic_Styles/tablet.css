@@ -119,4 +119,15 @@
                 padding: 1rem 0.5rem;
             }
 
+    .class-list-table,
+    table {
+        font-size: 0.97em;
+    }
+    .class-list-table th,
+    .class-list-table td,
+    table th,
+    table td {
+        padding: 10px 7px;
+    }
+
 }
