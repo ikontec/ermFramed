@@ -100,7 +100,11 @@ main {
 }
 
 .content > div {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 28px;
     width: 90%;
