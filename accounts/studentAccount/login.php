@@ -18,7 +18,7 @@
             <i class="fas fa-chevron-down" id="menuIcon"></i>
         </button>
         <ul>
-            <li><a href="../../index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="../../index.php"><i class="fas fa-home"></i> Home</a></li>
         </ul>
     </nav>    
 

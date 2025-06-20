@@ -76,7 +76,7 @@ nav ul li a:hover {
     color: #fffde7;
 }
 
-.studentProfile{
+.studentProfile, .studentSubjects{
     background-color: #fff;
     position: absolute;
     display: flex;
@@ -98,6 +98,8 @@ nav ul li a:hover {
         align-items: center;
         justify-content: center;
         gap: 10px;
+        width: 80%;
+        margin-left: 10%;
         
         img{
             width: 100px;
@@ -303,3 +305,612 @@ main {
         .logout-btn:hover {
             background: #b71c1c;
         }
+
+    #editor {
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin-top: 10px;
+        border-radius: 8px;
+        max-width: 350px;
+    }
+    #editor label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+    #editor input[type="text"],
+    #editor input[type="password"],
+    #editor input[type="file"] {
+        width: 100%;
+        padding: 6px;
+        margin-bottom: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    #editor button {
+        margin-right: 10px;
+        padding: 7px 18px;
+        border: none;
+        border-radius: 4px;
+        background: #007bff;
+        color: #fff;
+        cursor: pointer;
+    }
+    #editor button[type="button"] {
+        background: #aaa;
+    }
+
+            .message {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        /* Existing and refined CSS */
+        .studentSubjects {
+            padding: 20px;
+            background: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin-top: 20px;
+            position: relative;
+            z-index: 100; /* Ensure it's above other content when displayed */
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            position: fixed; /* Use fixed for pop-up behavior */
+            width: 90%; /* Adjust as needed */
+            max-width: 700px; /* Max width for larger screens */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            overflow-y: auto; /* Enable scrolling if content is long */
+            max-height: 90vh; /* Limit height to viewport */
+        }
+        .studentProfile {
+             padding: 20px;
+            background: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin-top: 20px;
+            position: relative;
+            z-index: 100; /* Ensure it's above other content when displayed */
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            position: fixed; /* Use fixed for pop-up behavior */
+            width: 90%; /* Adjust as needed */
+            max-width: 700px; /* Max width for larger screens */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            overflow-y: auto; /* Enable scrolling if content is long */
+            max-height: 90vh; /* Limit height to viewport */
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .highlight {
+            color: green;
+        }
+        .update-class select,
+        .enroller input[type="text"] {
+            padding: 8px;
+            margin-right: 10px;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+            width: auto; /* Allow sizing based on content or flexbox */
+        }
+        .update-class button,
+        .enroller form button {
+            background: #0066cc;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .update-class button:hover,
+        .enroller form button:hover {
+            background-color: #0056b3;
+        }
+        .key {
+            margin-bottom: 15px;
+        }
+        .key h5 {
+            margin-bottom: 5px;
+        }
+        .key span {
+            padding: 5px 10px;
+            margin-right: 10px;
+            border-radius: 4px;
+            display: inline-block;
+            font-size: 0.9em;
+        }
+        .yes {
+            background-color: #28a745; /* Green */
+            color: white;
+        }
+        .no {
+            background-color: #dc3545; /* Red */
+            color: white;
+        }
+        .subjects-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .subjects-list button {
+            padding: 10px 18px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            min-width: 140px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+        #btn { /* Enrolled subjects (click to unenroll) */
+            background-color: #28a745;
+            color: white;
+        }
+        #btn:hover {
+            background-color: #218838;
+        }
+        #btnx { /* Unenrolled subjects (click to enroll) */
+            background-color: #ffc107;
+            color: black;
+        }
+        #btnx:hover {
+            background-color: #e0a800;
+        }
+        .year {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .year label {
+            white-space: nowrap;
+        }
+
+/* --- Academic Results Modal Styles --- */
+.academicResults {
+    /* Basic modal positioning and display */
+    padding: 20px;
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-top: 20px;
+    position: fixed; /* Use fixed for pop-up behavior */
+    z-index: 100; /* Ensure it's above other content */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* Center the modal */
+    width: 90%; /* Adjust as needed */
+    max-width: 800px; /* Max width for larger screens */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    overflow-y: auto; /* Enable scrolling if content is long */
+    max-height: 90vh; /* Limit height to viewport */
+}
+
+/* Close button for modals */
+.academicResults .close-btn { /* Using a class for consistency if you apply it elsewhere */
+    color: red;
+    font-weight: bolder;
+    font-size: 20px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+/* Section title for Academic Results */
+.academicResults h4 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Form for selecting examination season */
+.academicResults .results form {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+    gap: 15px; /* Space between form elements */
+    align-items: center;
+    margin-bottom: 25px;
+    justify-content: center; /* Center the form elements */
+}
+
+.academicResults .results select {
+    padding: 10px 15px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    font-size: 16px;
+    flex-grow: 1; /* Allows select to grow and take available space */
+    max-width: 300px; /* Max width for the select box */
+}
+
+.academicResults .results button#btn { /* The Retrieve Results button */
+    background-color: #007bff; /* Blue */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0; /* Prevents button from shrinking */
+}
+
+.academicResults .results button#btn:hover {
+    background-color: #0056b3;
+}
+
+/* Styles for the displayed results table */
+.academicResults .tokeo {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.academicResults .tokeo h4 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #555;
+    border-bottom: none; /* Override previous h4 border */
+    padding-bottom: 0;
+}
+
+.academicResults .tokeo table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.academicResults .tokeo th,
+.academicResults .tokeo td {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 16px;
+}
+
+.academicResults .tokeo thead th {
+    background-color: #e2e6ea;
+    color: #333;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.academicResults .tokeo tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.academicResults .tokeo tbody tr:hover {
+    background-color: #e9e9e9;
+}
+
+/* Style for the overall summary table */
+.academicResults .results > table { /* Target the second table directly under .results */
+    margin-top: 25px;
+    border: 2px solid #007bff; /* Highlight main summary */
+    width: 100%; /* Ensure it spans full width */
+}
+
+.academicResults .results > table th,
+.academicResults .results > table td {
+    padding: 15px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.academicResults .results > table tbody tr:nth-child(even) {
+    background-color: #e9f5ff; /* Light blue for summary table rows */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .academicResults {
+        width: 95%;
+        padding: 15px;
+    }
+    .academicResults h4 {
+        font-size: 20px;
+    }
+    .academicResults .results form {
+        flex-direction: column; /* Stack elements vertically on small screens */
+        align-items: stretch; /* Stretch to fill width */
+    }
+    .academicResults .results select,
+    .academicResults .results button#btn {
+        max-width: 100%; /* Take full width */
+        width: 100%;
+    }
+    .academicResults .tokeo th,
+    .academicResults .tokeo td {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+    .academicResults button.feed {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .academicResults .close-btn {
+        font-size: 18px;
+        right: 15px;
+    }
+    .academicResults h4 {
+        font-size: 18px;
+    }
+    .academicResults .results > table th,
+    .academicResults .results > table td {
+        font-size: 16px;
+        padding: 10px;
+    }
+} 
+/* --- Reports Modal Styles (New Main Container) --- */
+.reports { /* Using the class for consistency, but the ID #reports will apply */
+    padding: 20px;
+    background: #f9f9f9; /* Consistent with your modal's background */
+    border: 1px solid #ccc; /* Consistent with your modal's border */
+    border-radius: 10px; /* Consistent with your modal's border-radius */
+    margin-top: 20px; /* Adjust as needed */
+    position: fixed; /* Makes it a popup */
+    z-index: 100; /* Ensures it's on top of other content */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* Centers the modal on screen */
+    width: 90%; /* Adjust as needed */
+    max-width: 800px; /* Max width for larger screens */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Consistent shadow */
+    overflow-y: auto; /* Enables scrolling if content is long */
+    max-height: 90vh; /* Limits height to viewport */
+    /* display: none;  This is set in your HTML. JS will toggle it. */
+}
+
+/* Close button for the reports modal */
+/* Applying styles directly to the span as per your HTML */
+.reports > span { /* Targets the direct child span of #reports */
+    color: red;
+    font-weight: bolder;
+    font-size: 20px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 101; /* Ensure close button is above other modal content */
+}
+
+/* Header section styles within the report modal */
+.reports .header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px 0;
+    background-color: #f9f9f9; /* Same background as modal */
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Soft shadow like modal */
+}
+
+.reports .header .heading {
+    color: #333; /* Matching main modal H4 color */
+    margin: 5px 0;
+    font-size: 1.4em;
+    padding-bottom: 5px;
+}
+
+/* Section for Academic Trend and Discipline Trend within the modal */
+/* No separate .academic-discipline-container needed if .reports is the main wrapper */
+.reports > div > h4 { /* Targeting "STUDENT'S ACADEMIC TREND" and "STUDENT'S DISCIPLINE TREND" */
+    text-align: center;
+    color: #333; /* Matching modal H4 color */
+    margin-top: 25px;
+    margin-bottom: 20px;
+    font-size: 24px; /* Matching modal H4 font size */
+    border-bottom: 2px solid #eee; /* Matching modal H4 border */
+    padding-bottom: 10px;
+}
+
+/* Academic Results and Discipline sections (content blocks) */
+.reports .results, /* This .results is for the trend section */
+.reports .discipline {
+    padding: 15px;
+    margin-bottom: 30px;
+    border: 1px solid #ccc; /* Consistent with your modal outer border */
+    border-radius: 10px; /* Consistent with your modal border-radius */
+    background-color: #fefefe;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Consistent shadow */
+}
+
+/* Individual exam result blocks within the trend (.test) */
+.reports .test {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 5px;
+    background-color: #fff; /* White background for individual tests */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08); /* Subtle shadow for each test block */
+}
+
+.reports .test h4 {
+    color: #555; /* Matching modal .tokeo h4 color */
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 20px; /* Matching modal .tokeo h4 font size */
+    text-align: left;
+    border-bottom: 1px solid #eee; /* Consistent border for sub-headings */
+    padding-bottom: 8px;
+}
+
+/* Table styling for marks (within .results and .discipline) */
+.reports .results table,
+.reports .discipline table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+.reports .results th,
+.reports .discipline th {
+    background-color: #e2e6ea; /* Matching modal table header background */
+    color: #333; /* Matching modal table header color */
+    padding: 12px 15px; /* Matching modal table padding */
+    text-align: left;
+    border: 1px solid #ddd; /* Matching modal table border */
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 16px; /* Matching modal table font size */
+}
+
+.reports .results td,
+.reports .discipline td {
+    padding: 12px 15px; /* Matching modal table padding */
+    border: 1px solid #ddd; /* Matching modal table border */
+    text-align: left;
+    background-color: #fefefe;
+    font-size: 16px; /* Matching modal table font size */
+}
+
+.reports .results tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Zebra striping */
+}
+
+.reports .results tbody tr:hover {
+    background-color: #e9e9e9; /* Hover effect */
+}
+
+/* Text styles for total, average, grade in academic trend */
+.reports .test p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+.reports .test p strong {
+    color: #333;
+}
+
+/* Progress chart area */
+.reports .chart {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff; /* White background for chart area */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 10px; /* Consistent border-radius */
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08); /* Consistent shadow */
+}
+
+.reports .chart label {
+    font-weight: bold;
+    color: #555; /* Matching text color */
+    margin-bottom: 10px;
+    display: block;
+    font-size: 18px;
+}
+
+/* Canvas for Chart.js */
+.reports #progressChart {
+    max-width: 100%;
+    height: auto;
+    margin-top: 15px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08);
+}
+
+/* Discipline section styling - similar to individual test blocks */
+.reports .discipline .case {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #e0e0e0;
+}
+
+.reports .discipline .case:last-child {
+    border-bottom: none;
+}
+
+.reports .discipline .case p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #444;
+}
+
+.reports .discipline .case p strong {
+    color: #222;
+}
+
+/* No case reported / Keep it up messages */
+.reports .discipline label {
+    display: block;
+    text-align: center;
+    margin: 10px 0;
+    font-weight: bold;
+    color: #555;
+}
+
+.reports .discipline label:last-of-type {
+    color: #28a745; /* Green for positive remark */
+    font-size: 1.1em;
+}
+
+/* Utility for spacing (if still needed) */
+.br-clear {
+    clear: both;
+    margin-bottom: 20px;
+}
+
+/* --- Responsive Adjustments (Applied across the reports modal) --- */
+@media (max-width: 768px) {
+    .reports {
+        width: 95%;
+        padding: 15px;
+    }
+    .reports > span {
+        font-size: 18px;
+        right: 15px;
+    }
+    .reports .header .heading,
+    .reports > div > h4 { /* Main section headings */
+        font-size: 20px;
+    }
+    .reports .test h4 { /* Individual test headings */
+        font-size: 18px;
+    }
+    .reports .results th,
+    .reports .discipline th,
+    .reports .results td,
+    .reports .discipline td {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+    .reports .test p,
+    .reports .discipline .case p,
+    .reports .chart label {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .reports .header .heading,
+    .reports > div > h4 {
+        font-size: 18px;
+    }
+}
