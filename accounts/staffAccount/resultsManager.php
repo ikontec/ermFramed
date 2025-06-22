@@ -58,17 +58,17 @@ include 'classes/connect.php';
                     <h3>Subject Performance Analysis</h3>
                 </div>
 
-                <div class="dashboard-card" onclick="location.href='#'">
+                <div class="dashboard-card" onclick="location.href='oneStudentProgress.php'">
                     <i class="fas fa-user-graduate"></i> <!-- changed from envelope to user-graduate -->
                     <h3>Student Progress</h3>
                 </div>
 
-                <div class="dashboard-card" onclick="location.href='#'">
+                <div class="dashboard-card" onclick="location.href='generalResults.php'">
                     <i class="fas fa-file-alt"></i> <!-- changed from user-plus to file-alt -->
                     <h3>General Results</h3>
                 </div>
 
-                <div class="dashboard-card" onclick="location.href='#'">
+                <div class="dashboard-card" onclick="location.href='generalPerformanceAnalysis.php'">
                     <i class="fas fa-chart-line"></i> <!-- changed from calendar-alt to chart-line -->
                     <h3>General Performance Analysis</h3>
                 </div>

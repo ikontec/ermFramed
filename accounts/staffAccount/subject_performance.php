@@ -194,7 +194,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <i class="fas fa-chevron-down" id="menuIcon"></i>
         </button>
         <ul>
-            <li><a href="teacherAccount.php"><i class="fas fa-arrow-left"></i> Back</a></li>
+            <li><a href="resultsManager.php"><i class="fas fa-arrow-left"></i> Back</a></li>
         </ul>
     </nav>
 
