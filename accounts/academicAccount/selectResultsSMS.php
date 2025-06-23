@@ -1,12 +1,12 @@
 <?php
 session_start();
-// Ensure the staff is logged in
-if (!isset($_SESSION['staff_id'])) {
+include 'classes/connect.php';
+
+// Ensure the author is logged in
+if (!isset($_SESSION['admin_id'])) {
     header("Location: login.php"); // Redirect to the login page if not logged in
     exit();
 }
-
-include 'classes/connect.php';
 
 ?>
 
@@ -15,28 +15,28 @@ include 'classes/connect.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Results Manager</title>
-    <link rel="stylesheet" href="Staff_Styles/pc.css">
-    <link rel="stylesheet" href="Staff_Styles/tablet.css">
-    <link rel="stylesheet" href="Staff_Styles/phone.css">
+    <title>SMS</title>
+    <link rel="stylesheet" href="Academic_Styles/pc.css">
+    <link rel="stylesheet" href="Academic_Styles/tablet.css">
+    <link rel="stylesheet" href="Academic_Styles/phone.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-<header>
-    <img src="../../images/default.png" alt="school logo" class="logo">
-    <h1 class="schoolName">KWAUSO SECONDARY SCHOOL</h1>
-</header>
-<nav class="nav">
-    <button class="menuButton" id="menuToggle" aria-label="Toggle menu">
-        <i class="fas fa-chevron-down" id="menuIcon"></i>
-    </button>
-    <ul>
-        <li><a href="resultsManager.php"><i class="fas fa-arrow-left"></i> Back</a></li>
-    </ul>
-</nav>
+    <header>
+        <img src="../../images/default.png" alt="school logo" class="logo">
+        <h1 class="schoolName">KWAUSO SECONDARY SCHOOL</h1>
+    </header>
+
+    <nav class="nav">
+        <button class="menuButton" id="menuToggle" aria-label="Toggle menu">
+            <i class="fas fa-chevron-down" id="menuIcon"></i>
+        </button>
+        <ul>
+            <li><a href="messages.php"><i class="fas fa-arrow-left"></i> Back</a></li>
+        </ul>
+    </nav>
     <main class="upt">
-        <form class="form" action="kapo.php" method="post">
+        <form class="form" action="xenderSMS.php" method="post">
             <select id="class" name="class" required>
                 <option value="">Select Class</option>
                 <option value="form one">Form One</option>

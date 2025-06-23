@@ -98,30 +98,34 @@ if ($stmt = $conn->prepare("SELECT name, photo, email FROM admin WHERE admin_id 
                     <i class="fas fa-users"></i>
                     <h3>View Staff Members</h3>
                     <p>Manage staff records</p>
-                </div>                
+                </div>  
+                
+                <div class="dashboard-card" onclick="location.href='resultsManager.php'">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Results Manager</h3>
 
-                <div class="dashboard-card" onclick="location.href='attendance.html'">
-                    <i class="fas fa-calendar-check"></i>
-                    <h3>Attendance</h3>
-                    <p>Mark and review student attendance.</p>
-                </div>
+                </div> 
+                
+                <div class="dashboard-card" onclick="location.href='addStaff.php'">
+                    <i class="fas fa-user-plus"></i>
+                    <h3>Register New Staff</h3>
+                </div>  
+                
+                <div class="dashboard-card" onclick="location.href='addStudent.php'">
+                    <i class="fas fa-user-plus"></i>
+                    <h3>Register New Student</h3>
+                </div>                 
 
-                <div class="dashboard-card" onclick="location.href='messages.html'">
+                <div class="dashboard-card" onclick="location.href='messages.php'">
                     <i class="fas fa-envelope"></i>
                     <h3>Messages</h3>
                     <p>Check and send messages.</p>
                 </div>
 
-                <div class="dashboard-card" onclick="location.href='settings.html'">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Results Manager</h3>
-                    <p>Account and dashboard settings.</p>
-                </div>
-
-                <div class="dashboard-card" onclick="location.href='settings.html'">
-                    <i class="fas fa-user-plus"></i>
-                    <h3>Make Registrations</h3>
-                    <p>Account and dashboard settings.</p>
+                <div class="dashboard-card" onclick="location.href='attendance.html'">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Attendance</h3>
+                    <p>Mark and review student attendance.</p>
                 </div>
 
                 <div class="dashboard-card" onclick="location.href='settings.html'">

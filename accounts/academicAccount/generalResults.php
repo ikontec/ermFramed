@@ -1,7 +1,7 @@
 <?php
 session_start();
 // Ensure the staff is logged in
-if (!isset($_SESSION['staff_id'])) {
+if (!isset($_SESSION['admin_id'])) {
     header("Location: login.php"); // Redirect to the login page if not logged in
     exit();
 }
@@ -16,11 +16,10 @@ include 'classes/connect.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Results Manager</title>
-    <link rel="stylesheet" href="Staff_Styles/pc.css">
-    <link rel="stylesheet" href="Staff_Styles/tablet.css">
-    <link rel="stylesheet" href="Staff_Styles/phone.css">
+    <link rel="stylesheet" href="Academic_Styles/pc.css">
+    <link rel="stylesheet" href="Academic_Styles/tablet.css">
+    <link rel="stylesheet" href="Academic_Styles/phone.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 <header>
