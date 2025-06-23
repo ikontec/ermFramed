@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | KWAUSO SECONDARY SCHOOL</title>
-    <link rel="stylesheet" href="myStyles/pc.css">
-    <link rel="stylesheet" href="myStyles/tablet.css">
-    <link rel="stylesheet" href="myStyles/phone.css">
+    <title>Login </title>
+    <link rel="stylesheet" href="Academic_Styles/pc.css">
+    <link rel="stylesheet" href="Academic_Styles/tablet.css">
+    <link rel="stylesheet" href="Academic_Styles/phone.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
@@ -20,23 +20,75 @@
             <i class="fas fa-chevron-down" id="menuIcon"></i>
         </button>
         <ul>
-            <li><a href="../../index.html"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="admission.html"><i class="fas fa-user-plus"></i> Admission</a></li>
-            <li><a href="admission.html"><i class="fas fa-users"></i> Our Team</a></li>
-            <li><a href="helpCenter.html"><i class="fas fa-question-circle"></i> Help Center</a></li>
-            <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
-            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
-            <li><a href="https://ikonteki.wuaze.com"><i class="fas fa-blog"></i> Developer's Blog</a></li>
+            <li><a href="../../index.php"><i class="fas fa-home"></i> Home</a></li>
         </ul>
     </nav>    
 
     <main>
+            <?php
+                session_start();
+
+                // Include the database connection file
+                include 'classes/connect.php';
+
+                // Check if POST data is received
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    // Sanitize and validate email input
+                    $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+                    if (!$email) {
+                        die("Invalid email format");
+                    }
+
+                    // Sanitize password input (for illustration, you may need stronger password handling)
+                    $password = $_POST['password'];
+
+                    // Prepare SQL statement to fetch password and admin_id for the given email
+                    $stmt = $conn->prepare("SELECT admin_id, password FROM admin WHERE email = ?");
+                    if (!$stmt) {
+                        die("Prepare failed: " . $conn->error);
+                    }
+
+                    // Bind parameters and execute query
+                    $stmt->bind_param("s", $email);
+                    $stmt->execute();
+
+                    // Store result
+                    $stmt->store_result();
+
+                    // Check if the email exists in the database
+                    if ($stmt->num_rows > 0) {
+                        // Bind the result to variables
+                        $stmt->bind_result($admin_id, $stored_password);
+                        $stmt->fetch();
+
+                        // Verify the password (you should use password_verify() for secure password comparison)
+                        if ($password === $stored_password) {
+                            // Password is correct, set session variables
+                            $_SESSION['admin_id'] = $admin_id;
+                            $_SESSION['email'] = $email;
+                            // Redirect to the dashboard page
+                            header("Location: academicAccount.php");
+                            exit;
+                        } else {
+                            echo "<pre style='color: red;'>"."Incorrect password or email!"."</pre>";
+                        }
+                    } else {
+                        echo "<pre style='color: red;'>"."Incorrect password or email!"."</pre>";
+                    }
+
+                    // Close statement
+                    $stmt->close();
+                }
+                // Close connection
+                $conn->close();
+            ?>
+
         <div class="login-container">
             <h2><i class="fas fa-sign-in-alt"></i> Login</h2>
-            <form action="accounts/staffAccount/teacherAccount.html" method="post" autocomplete="off">
+            <form action="" method="post" autocomplete="off">
                 <div>
                     <label for="username"><i class="fas fa-user"></i> Username</label>
-                    <input type="text" id="username" name="username" required autofocus>
+                    <input type="text" id="username" name="email" required autofocus>
                 </div>
                 <div>
                     <label for="password"><i class="fas fa-lock"></i> Password</label>

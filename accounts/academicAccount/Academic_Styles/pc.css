@@ -310,3 +310,317 @@ table button {
 table button:hover {
     background: #2e7031;
 }
+
+    .contain {
+        max-width: 900px;
+        margin: 60px auto;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .contain h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #007bff;
+    }
+
+    form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+        margin-top: 8px;
+    }
+
+    select, #btn2 {
+        padding: 10px 15px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        outline: none;
+    }
+
+    #btn2 {
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    #btn2:hover {
+        background-color: #0056b3;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 15px;
+        margin-top: 20px;
+    }
+
+    th, td {
+        border: 1px solid #ccc;
+        padding: 12px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #007bff;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #eef6ff;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 8px 12px;
+        background-color: #28a745;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #1e7e34;
+    }
+
+    @media screen and (max-width: 600px) {
+        .contain {
+            padding: 15px;
+        }
+
+        table, th, td {
+            font-size: 13px;
+        }
+
+        form {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        select, #btn2 {
+            width: 100%;
+        }
+    }
+
+
+
+        .details {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 25px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+        font-family: Arial, sans-serif;
+    }
+
+    .details h3 {
+        text-align: center;
+        color: #007bff;
+        margin-bottom: 15px;
+    }
+
+    .details p {
+        font-size: 16px;
+        margin: 10px 0;
+        line-height: 1.5;
+    }
+
+    .details strong {
+        color: #333;
+        font-weight: 600;
+    }
+
+    .edit {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .edit:hover {
+        background-color: #0056b3;
+    }
+
+    @media screen and (max-width: 600px) {
+        .details {
+            padding: 15px;
+            font-size: 14px;
+        }
+
+        .details p {
+            font-size: 14px;
+        }
+
+        .edit {
+            width: 100%;
+            text-align: center;
+            padding: 12px;
+        }
+    }
+
+
+
+
+/* Section Titles */
+.heading {
+    text-align: center;
+    color: #007bff;
+    font-size: 20px;
+}
+
+/* Academic Results */
+.results {
+    padding: 20px;
+}
+
+.test {
+    margin-bottom: 40px;
+}
+
+.test h4 {
+    color: #191818;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.test table {
+    width: 30%;
+    border-collapse: collapse;
+    border: #191818;
+    background-color: white;
+}
+
+.test th, .test td {
+    border: 1px solid #595858;
+    padding: 10px;
+    text-align: center;
+}
+
+.test th {
+    background-color: #292a2a;
+}
+
+.test p {
+    margin: 5px 0;
+    font-weight: 500;
+}
+
+/* Chart Section */
+.chart {
+    padding: 20px;
+    background: white;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+/* Discipline Section */
+.discipline {
+    padding: 20px;
+    background: #fff7f7;
+    border-left: 4px solid #dc3545;
+    margin: 20px;
+    border-radius: 8px;
+}
+
+.case {
+    background-color: white;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.case p {
+    margin: 8px 0;
+    line-height: 1.4;
+}
+
+/* Form Container */
+.form-container {
+    max-width: 700px;
+    margin: 30px auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.08);
+}
+
+.form-container h4 {
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+form textarea,
+form input[type=\"date\"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 5px;
+}
+
+form button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .schoolName {
+        font-size: 18px;
+    }
+
+    .nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .chart canvas {
+        width: 100% !important;
+        height: auto !important;
+    }
+}
+
+    
+
