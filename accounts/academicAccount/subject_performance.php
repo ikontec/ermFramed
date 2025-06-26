@@ -186,8 +186,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 
     <header>
-        <img src="../../images/default.png" alt="school logo" class="logo">
-        <h1 class="schoolName">KWAUSO SECONDARY SCHOOL</h1>
+        <?php
+            include '../../classes/connect.php';
+
+            // Fetch data from the parent table
+            $get_data = $conn->query("SELECT image_id, image, title FROM back_site");
+            if (!$get_data) {
+                die("Error fetching exam name: " . $conn->error);
+            }
+            $site_data = $get_data->fetch_assoc();
+            $title = $site_data['title'];
+            $image = $site_data['image'];
+        ?>    
+        <img src="../../<?php echo $image; ?>" alt="school logo" class="logo">
+        <h1 class="schoolName"><?php echo $title; ?></h1>
     </header>
 
     <nav class="nav">
@@ -304,36 +316,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p class="no-data">No individual student performance data available for the latest exam in the selected subject and class.</p>
             <?php endif; ?>
 
-            <div class="chart-container">
+            <div class="chart-container" style="position: relative; width: 100%; max-width: 800px; height: 400px; margin: auto;">
                 <h3>Performance Trend</h3>
-                <canvas id="trendChart"></canvas>
+                <canvas id="trendChart" style="width: 100%; height: 100%;"></canvas>
             </div>
 
+
             <script>
-                // Ensure the canvas context is obtained correctly
+            document.addEventListener("DOMContentLoaded", function () {
                 const ctx = document.getElementById('trendChart');
-                if (ctx) { // Check if canvas element exists
-                    new Chart(ctx.getContext('2d'), {
+                if (ctx) {
+                    const trendChart = new Chart(ctx, {
                         type: 'line',
                         data: {
                             labels: <?= json_encode(array_column($analysis_data, 'exam')) ?>,
                             datasets: [{
                                 label: 'Average Marks',
                                 data: <?= json_encode(array_column($analysis_data, 'avg')) ?>,
-                                backgroundColor: 'rgba(0,123,255,0.2)',
+                                backgroundColor: 'rgba(0, 123, 255, 0.2)',
                                 borderColor: '#007BFF',
+                                fill: true,
+                                tension: 0.4,
+                                borderWidth: 2,
                                 pointBackgroundColor: '#007BFF',
                                 pointBorderColor: '#fff',
                                 pointHoverBackgroundColor: '#fff',
-                                pointHoverBorderColor: '#007BFF',
-                                fill: true,
-                                tension: 0.3,
-                                borderWidth: 2
+                                pointHoverBorderColor: '#007BFF'
                             }]
                         },
                         options: {
                             responsive: true,
-                            maintainAspectRatio: false, // This is key to preventing infinite height expansion
+                            maintainAspectRatio: false,
                             scales: {
                                 y: {
                                     beginAtZero: true,
@@ -352,12 +365,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             },
                             plugins: {
                                 legend: {
-                                    display: true,
-                                    position: 'top',
+                                    position: 'top'
                                 },
                                 tooltip: {
                                     mode: 'index',
-                                    intersect: false,
+                                    intersect: false
                                 }
                             }
                         }
@@ -365,7 +377,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 } else {
                     console.error("Canvas element with ID 'trendChart' not found.");
                 }
+            });
             </script>
+
         <?php else: ?>
             <p class="no-data">No performance data found for the selected subject and class in the last 5 exams. Please try a different selection or ensure data exists.</p>
         <?php endif; ?>
@@ -373,7 +387,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p class="no-data">Select a subject and class from the options above to view performance analysis.</p>
     <?php endif; ?>
 </div>
-</main>
     <script src="script.js"></script>
 </body>
 </html>

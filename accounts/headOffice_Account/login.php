@@ -3,16 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | KWAUSO SECONDARY SCHOOL</title>
-    <link rel="stylesheet" href="myStyles/pc.css">
-    <link rel="stylesheet" href="myStyles/tablet.css">
-    <link rel="stylesheet" href="myStyles/phone.css">
+    <title>Login</title>
+    <link rel="stylesheet" href="HeadOffice_Styles/pc.css">
+    <link rel="stylesheet" href="HeadOffice_Styles/tablet.css">
+    <link rel="stylesheet" href="HeadOffice_Styles/phone.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
     <header>
-        <img src="../../images/default.png" alt="school logo" class="logo">
-        <h1 class="schoolName">KWAUSO SECONDARY SCHOOL</h1>
+        <?php
+            include '../../classes/connect.php';
+
+            // Fetch data from the parent table
+            $get_data = $conn->query("SELECT image_id, image, title FROM back_site");
+            if (!$get_data) {
+                die("Error fetching exam name: " . $conn->error);
+            }
+            $site_data = $get_data->fetch_assoc();
+            $title = $site_data['title'];
+            $image = $site_data['image'];
+        ?>    
+        <img src="../../<?php echo $image; ?>" alt="school logo" class="logo">
+        <h1 class="schoolName"><?php echo $title; ?></h1>
     </header>
 
     <nav class="nav">
@@ -20,20 +32,14 @@
             <i class="fas fa-chevron-down" id="menuIcon"></i>
         </button>
         <ul>
-            <li><a href="../../index.html"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="admission.html"><i class="fas fa-user-plus"></i> Admission</a></li>
-            <li><a href="admission.html"><i class="fas fa-users"></i> Our Team</a></li>
-            <li><a href="helpCenter.html"><i class="fas fa-question-circle"></i> Help Center</a></li>
-            <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
-            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
-            <li><a href="https://ikonteki.wuaze.com"><i class="fas fa-blog"></i> Developer's Blog</a></li>
+            <li><a href="../../index.php"><i class="fas fa-home"></i> Home</a></li>
         </ul>
     </nav>    
 
     <main>
         <div class="login-container">
             <h2><i class="fas fa-sign-in-alt"></i> Login</h2>
-            <form action="accounts/staffAccount/teacherAccount.html" method="post" autocomplete="off">
+            <form action="" method="post" autocomplete="off">
                 <div>
                     <label for="username"><i class="fas fa-user"></i> Username</label>
                     <input type="text" id="username" name="username" required autofocus>

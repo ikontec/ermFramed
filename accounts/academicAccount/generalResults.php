@@ -22,10 +22,22 @@ include 'classes/connect.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-<header>
-    <img src="../../images/default.png" alt="school logo" class="logo">
-    <h1 class="schoolName">KWAUSO SECONDARY SCHOOL</h1>
-</header>
+    <header>
+        <?php
+            include '../../classes/connect.php';
+
+            // Fetch data from the parent table
+            $get_data = $conn->query("SELECT image_id, image, title FROM back_site");
+            if (!$get_data) {
+                die("Error fetching exam name: " . $conn->error);
+            }
+            $site_data = $get_data->fetch_assoc();
+            $title = $site_data['title'];
+            $image = $site_data['image'];
+        ?>    
+        <img src="../../<?php echo $image; ?>" alt="school logo" class="logo">
+        <h1 class="schoolName"><?php echo $title; ?></h1>
+    </header>
 <nav class="nav">
     <button class="menuButton" id="menuToggle" aria-label="Toggle menu">
         <i class="fas fa-chevron-down" id="menuIcon"></i>
