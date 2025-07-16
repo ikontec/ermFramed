@@ -77,7 +77,9 @@ if (!isset($_SESSION['staff_id'])) {
         <option value="Form Three">Form Three</option>
         <option value="Form Four">Form Four</option>
       </select><br><br>
-      <button type="submit" name="fetch_students">Retrieve Students</button>
+      
+      <button class="nav-button" type="submit" name="fetch_students">Retrieve Students</button>
+      <button class="nav-button" type="submit" name="fetch_students">Use Excel File</button>
     </form>
     <div class="form">
       <?php
