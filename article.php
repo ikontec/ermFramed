@@ -11,7 +11,7 @@
 </head>
 <body>
      <!--headding or header div-->
-    <?php include 'classes/header.php'; ?>  
+    <?php include 'header.php'; ?>  
 
     <nav class="nav">
         <button class="menuButton" id="menuToggle" aria-label="Toggle menu">

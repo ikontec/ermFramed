@@ -78,7 +78,6 @@ if ($stmt = $conn->prepare("SELECT name, photo, email FROM admin WHERE admin_id 
         </button>
         <ul>
             <li><a href="../../index.php"><i class="fas fa-home"></i>Home</a></li>
-            <li><a href="../headOffice_Account/head.php"><i class="fas fa-chalkboard-teacher"></i> Administration Account</a></li>
             <li><a href="helpCenter.php"><i class="fas fa-question-circle"></i> Help Center</a></li>
             <form method="post" action="">
                 <button class="logout-btn" name="logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
@@ -150,7 +149,19 @@ if ($stmt = $conn->prepare("SELECT name, photo, email FROM admin WHERE admin_id 
                     <i class="fas fa-table"></i>
                     <h3>Timetable</h3>
                     <p>Account and dashboard settings.</p>
-                </div>               
+                </div> 
+                
+                <div class="dashboard-card" onclick="location.href='make_post.php'">
+                    <i class="fas fa-pen-nib"></i>
+                    <h3>Create a Post</h3>
+                    <p>Share news, updates, or announcements with the school community.</p>
+                </div> 
+
+                <div class="dashboard-card" onclick="location.href='school_profile.php'">
+                    <i class="fas fa-school"></i>
+                    <h3>Update School Profile</h3>
+                    <p>Edit school information, logo, and contact details.</p>
+                </div>  
             </div>
         </div>
     </main>
