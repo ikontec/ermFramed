@@ -1,8 +1,8 @@
 <?php
-$servername = "sql100.infinityfree.com";
-$username = "if0_39366221";
-$password = "x46MLovtW2m9R";
-$dbname = "if0_39366221_erm";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "ermframeddb";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

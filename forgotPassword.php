@@ -1,18 +1,27 @@
 
+
 <?php
 include 'classes/connect.php';
-
 require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 $message = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $role = $_POST['role'] ?? '';
     $user_input = trim($_POST['user_input'] ?? '');
-    if ($user_input === '') {
-        $message = 'Please enter your email or username.';
+    $full_name = trim($_POST['full_name'] ?? '');
+
+    if ($role === '') {
+        $message = 'Please select your role.';
+    } elseif ($role === 'staff' && ($user_input === '' || $full_name === '')) {
+        $message = 'Please enter your full registered name and username or email.';
+    } elseif ($role === 'student' && $user_input === '') {
+        $message = 'Please enter your username or email.';
     } else {
-        // Search in both teacher and student tables
         $conn = $conn ?? (new mysqli('localhost', 'root', '', 'ermframed'));
         if ($conn->connect_error) {
             die('Database connection failed: ' . $conn->connect_error);
@@ -22,20 +31,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $accountType = null;
         $email = null;
 
-        // Check teacher account
-        $stmt = $conn->prepare("SELECT id, email FROM staff WHERE email = ? OR username = ? LIMIT 1");
-        $stmt->bind_param('ss', $user_input, $user_input);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        if ($row = $result->fetch_assoc()) {
-            $user = $row['id'];
-            $email = $row['email'];
-            $accountType = 'teacher';
-        }
-        $stmt->close();
-
-        // If not found, check student account
-        if (!$user) {
+        if ($role === 'staff') {
+            // Check staff by full name and username/email
+            $stmt = $conn->prepare("SELECT id, email FROM staff WHERE (email = ? OR username = ?) AND full_name = ? LIMIT 1");
+            $stmt->bind_param('sss', $user_input, $user_input, $full_name);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if ($row = $result->fetch_assoc()) {
+                $user = $row['id'];
+                $email = $row['email'];
+                $accountType = 'staff';
+            }
+            $stmt->close();
+        } elseif ($role === 'student') {
+            // Check student by username/email
             $stmt = $conn->prepare("SELECT id, email FROM students WHERE email = ? OR username = ? LIMIT 1");
             $stmt->bind_param('ss', $user_input, $user_input);
             $stmt->execute();
@@ -49,26 +58,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         if ($user && $email) {
-            // Generate token
             $token = bin2hex(random_bytes(32));
-            $expires = date('Y-m-d H:i:s', time() + 3600); // 1 hour expiry
-
-            // Store token in password_resets table
+            $expires = date('Y-m-d H:i:s', time() + 3600);
             $conn->query("CREATE TABLE IF NOT EXISTS password_resets (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT, account_type VARCHAR(20), token VARCHAR(64), expires DATETIME, used TINYINT DEFAULT 0)");
             $stmt = $conn->prepare("INSERT INTO password_resets (user_id, account_type, token, expires) VALUES (?, ?, ?, ?)");
             $stmt->bind_param('isss', $user, $accountType, $token, $expires);
             $stmt->execute();
             $stmt->close();
 
-            // Send email
             $reset_link = (isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/resetPassword.php?token=$token";
 
             $mail = new PHPMailer(true);
             $mail->isSMTP();
-            $mail->Host = 'smtp.example.com'; // Set your SMTP server
+            $mail->Host = 'smtp.example.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'your@email.com'; // SMTP username
-            $mail->Password = 'yourpassword'; // SMTP password
+            $mail->Username = 'your@email.com';
+            $mail->Password = 'yourpassword';
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
 
@@ -83,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $message = 'Failed to send email. Please contact support.';
             }
         } else {
-            $message = 'No account found with that email or username.';
+            $message = 'No account found with the provided information.';
         }
     }
 }
@@ -103,11 +108,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div style="color: #d00; margin-bottom: 10px;"> <?= htmlspecialchars($message) ?> </div>
         <?php endif; ?>
         <form method="post" autocomplete="off">
-            <label for="user_input">Email or Username:</label><br>
-            <input type="text" name="user_input" id="user_input" required style="width:100%;padding:8px;margin:10px 0;">
+            <label for="role">Select Role:</label><br>
+            <select name="role" id="role" required style="width:100%;padding:8px;margin:10px 0;">
+                <option value="">-- Select --</option>
+                <option value="staff" <?= (isset($_POST['role']) && $_POST['role'] === 'staff') ? 'selected' : '' ?>>Staff</option>
+                <option value="student" <?= (isset($_POST['role']) && $_POST['role'] === 'student') ? 'selected' : '' ?>>Student</option>
+            </select>
+
+            <div id="staff-fields" style="display:<?= (isset($_POST['role']) && $_POST['role'] === 'staff') ? 'block' : 'none' ?>;">
+                <label for="full_name">Full Registered Name (Staff):</label><br>
+                <input type="text" name="full_name" id="full_name" value="<?= htmlspecialchars($_POST['full_name'] ?? '') ?>" style="width:100%;padding:8px;margin:10px 0;">
+                <label for="user_input">Username or Email (Staff):</label><br>
+                <input type="text" name="user_input" id="user_input" value="<?= htmlspecialchars($_POST['user_input'] ?? '') ?>" style="width:100%;padding:8px;margin:10px 0;">
+            </div>
+
+            <div id="student-fields" style="display:<?= (isset($_POST['role']) && $_POST['role'] === 'student') ? 'block' : 'none' ?>;">
+                <label for="user_input_student">Username or Email (Student):</label><br>
+                <input type="text" name="user_input" id="user_input_student" value="<?= htmlspecialchars($_POST['user_input'] ?? '') ?>" style="width:100%;padding:8px;margin:10px 0;">
+            </div>
+
             <button type="submit" style="width:100%;padding:10px;background:#007bff;color:#fff;border:none;border-radius:4px;">Send Reset Link</button>
         </form>
         <p style="margin-top:20px;"><a href="index.php">Back to Login</a></p>
     </div>
+    <script>
+    // Show/hide fields based on role selection
+    document.getElementById('role').addEventListener('change', function() {
+        var staffFields = document.getElementById('staff-fields');
+        var studentFields = document.getElementById('student-fields');
+        if (this.value === 'staff') {
+            staffFields.style.display = 'block';
+            studentFields.style.display = 'none';
+        } else if (this.value === 'student') {
+            staffFields.style.display = 'none';
+            studentFields.style.display = 'block';
+        } else {
+            staffFields.style.display = 'none';
+            studentFields.style.display = 'none';
+        }
+    });
+    </script>
 </body>
 </html>

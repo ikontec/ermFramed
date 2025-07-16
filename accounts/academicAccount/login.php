@@ -109,7 +109,6 @@
                 <button type="submit"><i class="fas fa-arrow-right"></i> Login</button>
             </form>
             <div class="links">
-                <a href="forgotPassword.html">Forgot Password?</a>
             </div>
         </div>
     </main>
