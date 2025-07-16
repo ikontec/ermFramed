@@ -13,3 +13,4 @@
                 menuIcon.classList.add('fa-chevron-down');
             }
         });
+        
