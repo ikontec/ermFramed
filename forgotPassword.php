@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Send email
             $reset_link = (isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/resetPassword.php?token=$token";
 
-            $mail = new PHPMailer();
+            $mail = new PHPMailer(true);
             $mail->isSMTP();
             $mail->Host = 'smtp.example.com'; // Set your SMTP server
             $mail->SMTPAuth = true;
